@@ -1,0 +1,42 @@
+---
+model:
+  base filters: 64
+  groups: 8
+  dense convolutions: 2
+  downsampling: 'Conv2'
+  residual: true
+train:
+  patch size: 64
+  epochs: 20
+  batch size: 16
+  dataset splits: 10
+  learning rate: 1.e-3
+  weight decay: 1.e-2
+  noise level: 0.05
+  blur level:
+    - 0.1
+    - 0.5
+  brightness level:
+    - 0.99
+    - 1.2
+  scheduler gamma: 0.5
+  scheduler step size: 5
+  device: cuda:0
+  multi gpu: false
+  workers: 10
+  verbose: true
+  dataset path: './Dataset'
+  checkpoint path: './Checkpoints'
+val:
+  patch size: 256
+  batch size: 32
+  frequency: 1
+test:
+  dataset path: './Dataset'
+  experimental dataset path: './Experimental'
+  results path: 'Results'
+  experimental results path: 'ExperimentalResults'
+  pretrained models path: 'Pretrained'
+  save images: true
+  device: cuda:0
+...
